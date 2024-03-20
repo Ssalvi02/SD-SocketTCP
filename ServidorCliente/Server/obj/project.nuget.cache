@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "T1gDIXz83zGw71oZyQ8H3113+zlo8/CY10sWPA/g3AFpKr+uTXHCDYF7e4Yc2y56H9hL7AHSQiQU/hf2hj69HA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jaosa\\OneDrive\\Documentos\\C#\\ServidorCliente\\Server\\Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jaosa\\.nuget\\packages\\system.commandline\\2.0.0-beta4.22272.1\\system.commandline.2.0.0-beta4.22272.1.nupkg.sha512",
+    "C:\\Users\\jaosa\\.nuget\\packages\\system.commandline.namingconventionbinder\\2.0.0-beta4.22272.1\\system.commandline.namingconventionbinder.2.0.0-beta4.22272.1.nupkg.sha512"
+  ],
+  "logs": []
+}
