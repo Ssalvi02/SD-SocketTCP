@@ -8,6 +8,7 @@ o hash em SHA-512.
 
 PWD
 * Devolve o caminho corrente (PATH) usando String UTF separando os diretórios por barra(/).
+
 CHDIR path
 * Altera o diretório corrente para path, retornado uma String UTF, SUCCESS, no caso de sucesso, e ERROR, no caso
 de erro.
