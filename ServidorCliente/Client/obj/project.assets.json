@@ -147,11 +147,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jaosa\\OneDrive\\Documentos\\C#\\ServidorCliente\\Client\\Client.csproj",
+      "projectUniqueName": "D:\\Repos\\SD-SocketTCP\\ServidorCliente\\Client\\Client.csproj",
       "projectName": "Client",
-      "projectPath": "C:\\Users\\jaosa\\OneDrive\\Documentos\\C#\\ServidorCliente\\Client\\Client.csproj",
+      "projectPath": "D:\\Repos\\SD-SocketTCP\\ServidorCliente\\Client\\Client.csproj",
       "packagesPath": "C:\\Users\\jaosa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jaosa\\OneDrive\\Documentos\\C#\\ServidorCliente\\Client\\obj\\",
+      "outputPath": "D:\\Repos\\SD-SocketTCP\\ServidorCliente\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jaosa\\AppData\\Roaming\\NuGet\\NuGet.Config"

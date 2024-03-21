@@ -4,12 +4,12 @@ using System.CommandLine.NamingConventionBinder;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 
 class TCPServer
 {
     static async Task Main(string[] args)
     {
+        Console.OutputEncoding = Encoding.UTF8;
         // Configurar a linha de comando
         var rootCommand = new RootCommand
         {
@@ -75,11 +75,15 @@ class TCPServer
                 if(string.Equals(CheckCommand(message.ToUpper()), "CONNECT"))
                 {
                     var resultauth = ProcessMessage(message);
-                        Console.WriteLine(resultauth);
+                    Console.WriteLine(resultauth);
                     if(resultauth == "SUCCESS")
+                    {
                         Console.WriteLine("Cliente autenticado.");
+                    }
                     else
+                    {
                         Console.WriteLine("Cliente não autenticado.");
+                    }
                 }
 
                 // Feche a conexão
@@ -134,18 +138,45 @@ class TCPServer
         // Lógica de verificação de credenciais (substitua isso pela sua lógica real)
         // Aqui, apenas retornamos true se o nome de usuário for "user" e a senha for "password"
         // Lembre-se de usar uma solução de hash mais segura na produção
-        Console.WriteLine(username);
-        Console.WriteLine(passwordHash);
-        return username == "user" && Check512Hash(passwordHash);
+        return CheckUsername(username) && Check512Hash(passwordHash);
+    }
+
+    static bool CheckUsername(string username)
+    {
+        string hashtxt = File.ReadAllText("D:/DatabaseServer/hash.txt");
+        string[] splitedhashtxt = hashtxt.Split(new string[] {":", "\n"}, StringSplitOptions.None);
+        
+        for (int i = 0; i < splitedhashtxt.Length; i = i+2)
+        {
+            if(Equals(splitedhashtxt[i], username))
+            {
+                Console.WriteLine("ACHEI USER");
+                return true;
+            }
+        }
+        return false;
     }
 
     static bool Check512Hash(string input)
     {
-        if(string.Equals(CalculateSHA512Hash(input), "b109f3bbbc244eb82441917ed06d618b9008dd09b3befd1b5e07394c706a8bb980b1d7785e5976ec049b46df5f1326af5a2ea6d103fd07c95385ffab0cacbc86"))
+        string hashtxt = File.ReadAllText("D:/DatabaseServer/hash.txt");
+        string[] splitedhashtxt = hashtxt.Split(new string[] {":", "\n"}, StringSplitOptions.None);
+
+        for (int i = 1; i < splitedhashtxt.Length; i += 2)
         {
-            return true;
+            byte[] bytes = Encoding.UTF8.GetBytes(splitedhashtxt[i]);
+            splitedhashtxt[i] = Encoding.UTF8.GetString(bytes);
+        
+
+            //ESSA MERDA AQUI NÃO FAZ SENTIDO ALGUM PORRRRRRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            if(string.Equals(splitedhashtxt[i], CalculateSHA512Hash(input), StringComparison.InvariantCulture))
+            {
+                Console.WriteLine("ACHEI SENHA");
+                return true;
+            }
         }
-        else return false;
+
+        return false;
     }
 
     static string CalculateSHA512Hash(string input)
@@ -163,7 +194,8 @@ class TCPServer
                 hex += string.Format("{0:x2}", x);
             }
 
-            Console.WriteLine(hex);
+            //Console.WriteLine(hex);
+
             return hex;
         }
     }

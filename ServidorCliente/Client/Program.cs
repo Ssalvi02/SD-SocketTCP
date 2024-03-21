@@ -5,10 +5,14 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
+
 class TCPClient
 {
     static async Task Main(string[] args)
     {
+        Console.OutputEncoding = Encoding.UTF8;
         // Configurar a linha de comando
         var rootCommand = new RootCommand
         {
@@ -61,7 +65,7 @@ class TCPClient
                     string input = Console.ReadLine();
 
                     // Envie a mensagem para o servidor
-                    byte[] data = Encoding.ASCII.GetBytes(input);
+                    byte[] data = Encoding.UTF8.GetBytes(input);
                     await stream.WriteAsync(data, 0, data.Length);
 
                     if (input.ToUpper() == "EXIT")
@@ -72,7 +76,7 @@ class TCPClient
                     // Leia a resposta do servidor
                     // data = new byte[256];
                     // int bytesRead = await stream.ReadAsync(data, 0, data.Length);
-                    // string response = Encoding.ASCII.GetString(data, 0, bytesRead);
+                    // string response = Encoding.UTF8.GetString(data, 0, bytesRead);
                     // Console.WriteLine("Resposta do servidor: {0}", response);
                 }
             }
